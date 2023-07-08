@@ -8,6 +8,7 @@ include "Views/Templates/header.php";
     <li class="breadcrumb-item active fs-3">Módulo Pacientes</li>
 </ol>
 <button class="btn btn-primary mb-2" type="button" onclick="frmPaciente();">Nuevo <i class="fas fa-plus"></i></button>
+
 <table class="table table-light" id="tblPacientes">
     <thead class="thead-dark">
         <tr>
@@ -25,7 +26,6 @@ include "Views/Templates/header.php";
         </tr>
     </thead>
     <tbody>
-
     </tbody>
 </table>
 

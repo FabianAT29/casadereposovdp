@@ -1,4 +1,10 @@
-let tblUsuarios, tblClientes, tblPacientes, tblFamiliares, tblVisitas;
+let tblUsuarios,
+  tblClientes,
+  tblPacientes,
+  tblFamiliares,
+  tblVisitas,
+  tblEnfermeras,
+  tblDiagnostico;
 document.addEventListener("DOMContentLoaded", function () {
   tblUsuarios = $("#tblUsuarios").DataTable({
     ajax: {
@@ -101,8 +107,66 @@ document.addEventListener("DOMContentLoaded", function () {
       },
     ],
     language: {
-      url: "//cdn.datatables.net/plug-ins/1.13.4/i18n/es-ES.json",
+      url: "//cdn.datatables.net/plug-ins/1.10.11/i18n/Spanish.json",
     },
+    dom:
+      "<'row'<'col-sm-4'l><'col-sm-4 text-center'B><'col-sm-4'f>>" +
+      "<'row'<'col-sm-12'tr>>" +
+      "<'row'<'col-sm-5'i><'col-sm-7'p>>",
+    buttons: [
+      {
+        //Botón para Excel
+        extend: "excelHtml5",
+        footer: true,
+        title: "Reporte de Pacientes",
+        filename: "Reporte de Pacientes",
+
+        //Aquí es donde generas el botón personalizado
+        text: '<span class="badge badge-success"><i class="fas fa-file-excel"></i></span>',
+      },
+      //Botón para PDF
+      {
+        extend: "pdfHtml5",
+        download: "open",
+        footer: true,
+        title: "Reporte de Pacientes",
+        filename: "Reporte de Pacientes",
+        text: '<span class="badge  badge-danger"><i class="fas fa-file-pdf"></i></span>',
+        exportOptions: {
+          columns: [0, ":visible"],
+        },
+      },
+      //Botón para copiar
+      {
+        extend: "copyHtml5",
+        footer: true,
+        title: "Reporte de Pacientes",
+        filename: "Reporte de Pacientes",
+        text: '<span class="badge  badge-primary"><i class="fas fa-copy"></i></span>',
+        exportOptions: {
+          columns: [0, ":visible"],
+        },
+      },
+      //Botón para print
+      {
+        extend: "print",
+        footer: true,
+        filename: "ReportedePacientes_imprimir",
+        text: '<span class="badge badge-light"><i class="fas fa-print"></i></span>',
+      },
+      //Botón para cvs
+      {
+        extend: "csvHtml5",
+        footer: true,
+        filename: "ReportedePacientes_csv",
+        text: '<span class="badge  badge-success"><i class="fas fa-file-csv"></i></span>',
+      },
+      {
+        extend: "colvis",
+        text: '<span class="badge  badge-info"><i class="fas fa-columns"></i></span>',
+        postfixButtons: ["colvisRestore"],
+      },
+    ],
   });
   //Fin de la tabla pacientes
   tblFamiliares = $("#tblFamiliares").DataTable({
@@ -143,8 +207,66 @@ document.addEventListener("DOMContentLoaded", function () {
       },
     ],
     language: {
-      url: "//cdn.datatables.net/plug-ins/1.13.4/i18n/es-ES.json",
+      url: "//cdn.datatables.net/plug-ins/1.10.11/i18n/Spanish.json",
     },
+    dom:
+      "<'row'<'col-sm-4'l><'col-sm-4 text-center'B><'col-sm-4'f>>" +
+      "<'row'<'col-sm-12'tr>>" +
+      "<'row'<'col-sm-5'i><'col-sm-7'p>>",
+    buttons: [
+      {
+        //Botón para Excel
+        extend: "excelHtml5",
+        footer: true,
+        title: "Archivo",
+        filename: "Reporte de Familiares",
+
+        //Aquí es donde generas el botón personalizado
+        text: '<span class="badge badge-success"><i class="fas fa-file-excel"></i></span>',
+      },
+      //Botón para PDF
+      {
+        extend: "pdfHtml5",
+        download: "open",
+        footer: true,
+        title: "Reporte de Familiares",
+        filename: "Reporte de Familiares",
+        text: '<span class="badge  badge-danger"><i class="fas fa-file-pdf"></i></span>',
+        exportOptions: {
+          columns: [0, ":visible"],
+        },
+      },
+      //Botón para copiar
+      {
+        extend: "copyHtml5",
+        footer: true,
+        title: "Reporte de Familiares",
+        filename: "Reporte de Familiares",
+        text: '<span class="badge  badge-primary"><i class="fas fa-copy"></i></span>',
+        exportOptions: {
+          columns: [0, ":visible"],
+        },
+      },
+      //Botón para print
+      {
+        extend: "print",
+        footer: true,
+        filename: "ReportedeFamiliares_imprimir",
+        text: '<span class="badge badge-light"><i class="fas fa-print"></i></span>',
+      },
+      //Botón para cvs
+      {
+        extend: "csvHtml5",
+        footer: true,
+        filename: "ReportedeFamiliares_csv",
+        text: '<span class="badge  badge-success"><i class="fas fa-file-csv"></i></span>',
+      },
+      {
+        extend: "colvis",
+        text: '<span class="badge  badge-info"><i class="fas fa-columns"></i></span>',
+        postfixButtons: ["colvisRestore"],
+      },
+    ],
   });
   // Fin de la tabla familiares
   tblVisitas = $("#tblVisitas").DataTable({
@@ -176,10 +298,250 @@ document.addEventListener("DOMContentLoaded", function () {
       },
     ],
     language: {
-      url: "//cdn.datatables.net/plug-ins/1.13.4/i18n/es-ES.json",
+      url: "//cdn.datatables.net/plug-ins/1.10.11/i18n/Spanish.json",
     },
+    dom:
+      "<'row'<'col-sm-4'l><'col-sm-4 text-center'B><'col-sm-4'f>>" +
+      "<'row'<'col-sm-12'tr>>" +
+      "<'row'<'col-sm-5'i><'col-sm-7'p>>",
+    buttons: [
+      {
+        //Botón para Excel
+        extend: "excelHtml5",
+        footer: true,
+        title: "Reporte de Visitas",
+        filename: "Reporte de Visitas",
+
+        //Aquí es donde generas el botón personalizado
+        text: '<span class="badge badge-success"><i class="fas fa-file-excel"></i></span>',
+      },
+      //Botón para PDF
+      {
+        extend: "pdfHtml5",
+        download: "open",
+        footer: true,
+        title: "Reporte de Visitas",
+        filename: "Reporte de Visitas",
+        text: '<span class="badge  badge-danger"><i class="fas fa-file-pdf"></i></span>',
+        exportOptions: {
+          columns: [0, ":visible"],
+        },
+      },
+      //Botón para copiar
+      {
+        extend: "copyHtml5",
+        footer: true,
+        title: "Reporte de Visitas",
+        filename: "Reporte de Visitas",
+        text: '<span class="badge  badge-primary"><i class="fas fa-copy"></i></span>',
+        exportOptions: {
+          columns: [0, ":visible"],
+        },
+      },
+      //Botón para print
+      {
+        extend: "print",
+        footer: true,
+        filename: "ReportedeVisitas_imprimir",
+        text: '<span class="badge badge-light"><i class="fas fa-print"></i></span>',
+      },
+      //Botón para cvs
+      {
+        extend: "csvHtml5",
+        footer: true,
+        filename: "ReportedeVisitas_csv",
+        text: '<span class="badge  badge-success"><i class="fas fa-file-csv"></i></span>',
+      },
+      {
+        extend: "colvis",
+        text: '<span class="badge  badge-info"><i class="fas fa-columns"></i></span>',
+        postfixButtons: ["colvisRestore"],
+      },
+    ],
   });
   //Fin de la tabla visitas
+  tblEnfermeras = $("#tblEnfermeras").DataTable({
+    ajax: {
+      url: base_url + "Enfermeras/listar",
+      dataSrc: "",
+    },
+    columns: [
+      {
+        data: "id",
+      },
+      {
+        data: "dni",
+      },
+      {
+        data: "nombre",
+      },
+      {
+        data: "apepaterno",
+      },
+      {
+        data: "apematerno",
+      },
+      {
+        data: "dnipac",
+      },
+      {
+        data: "estado",
+      },
+      {
+        data: "acciones",
+      },
+    ],
+    language: {
+      url: "//cdn.datatables.net/plug-ins/1.10.11/i18n/Spanish.json",
+    },
+    dom:
+      "<'row'<'col-sm-4'l><'col-sm-4 text-center'B><'col-sm-4'f>>" +
+      "<'row'<'col-sm-12'tr>>" +
+      "<'row'<'col-sm-5'i><'col-sm-7'p>>",
+    buttons: [
+      {
+        //Botón para Excel
+        extend: "excelHtml5",
+        footer: true,
+        title: "Reporte de Enfermeras",
+        filename: "Reporte de Enfermeras",
+
+        //Aquí es donde generas el botón personalizado
+        text: '<span class="badge badge-success"><i class="fas fa-file-excel"></i></span>',
+      },
+      //Botón para PDF
+      {
+        extend: "pdfHtml5",
+        download: "open",
+        footer: true,
+        title: "Reporte de Enfermeras",
+        filename: "Reporte de Enfermeras",
+        text: '<span class="badge  badge-danger"><i class="fas fa-file-pdf"></i></span>',
+        exportOptions: {
+          columns: [0, ":visible"],
+        },
+      },
+      //Botón para copiar
+      {
+        extend: "copyHtml5",
+        footer: true,
+        title: "Reporte de Enfermeras",
+        filename: "Reporte de Enfermeras",
+        text: '<span class="badge  badge-primary"><i class="fas fa-copy"></i></span>',
+        exportOptions: {
+          columns: [0, ":visible"],
+        },
+      },
+      //Botón para print
+      {
+        extend: "print",
+        footer: true,
+        filename: "ReportedeEnfermeras_imprimir",
+        text: '<span class="badge badge-light"><i class="fas fa-print"></i></span>',
+      },
+      //Botón para cvs
+      {
+        extend: "csvHtml5",
+        footer: true,
+        filename: "ReportedeEnfermeras_csv",
+        text: '<span class="badge  badge-success"><i class="fas fa-file-csv"></i></span>',
+      },
+      {
+        extend: "colvis",
+        text: '<span class="badge  badge-info"><i class="fas fa-columns"></i></span>',
+        postfixButtons: ["colvisRestore"],
+      },
+    ],
+  });
+  // Fin de la tabla Enfermeras
+  tblDiagnostico = $("#tblDiagnostico").DataTable({
+    ajax: {
+      url: base_url + "Diagnostico/listar",
+      dataSrc: "",
+    },
+    columns: [
+      {
+        data: "id",
+      },
+      {
+        data: "dnipac",
+      },
+      {
+        data: "medicamento",
+      },
+      {
+        data: "detalles",
+      },
+      {
+        data: "estado",
+      },
+      {
+        data: "acciones",
+      },
+    ],
+    language: {
+      url: "//cdn.datatables.net/plug-ins/1.10.11/i18n/Spanish.json",
+    },
+    dom:
+      "<'row'<'col-sm-4'l><'col-sm-4 text-center'B><'col-sm-4'f>>" +
+      "<'row'<'col-sm-12'tr>>" +
+      "<'row'<'col-sm-5'i><'col-sm-7'p>>",
+    buttons: [
+      {
+        //Botón para Excel
+        extend: "excelHtml5",
+        footer: true,
+        title: "Reporte de Diagnostico",
+        filename: "Reporte de Diagnostico",
+
+        //Aquí es donde generas el botón personalizado
+        text: '<span class="badge badge-success"><i class="fas fa-file-excel"></i></span>',
+      },
+      //Botón para PDF
+      {
+        extend: "pdfHtml5",
+        download: "open",
+        footer: true,
+        title: "Reporte de Diagnostico",
+        filename: "Reporte de Diagnostico",
+        text: '<span class="badge  badge-danger"><i class="fas fa-file-pdf"></i></span>',
+        exportOptions: {
+          columns: [0, ":visible"],
+        },
+      },
+      //Botón para copiar
+      {
+        extend: "copyHtml5",
+        footer: true,
+        title: "Reporte de Diagnostico",
+        filename: "Reporte de Diagnostico",
+        text: '<span class="badge  badge-primary"><i class="fas fa-copy"></i></span>',
+        exportOptions: {
+          columns: [0, ":visible"],
+        },
+      },
+      //Botón para print
+      {
+        extend: "print",
+        footer: true,
+        filename: "ReportedeDiagnostico_imprimir",
+        text: '<span class="badge badge-light"><i class="fas fa-print"></i></span>',
+      },
+      //Botón para cvs
+      {
+        extend: "csvHtml5",
+        footer: true,
+        filename: "ReportedeDiagnostico_csv",
+        text: '<span class="badge  badge-success"><i class="fas fa-file-csv"></i></span>',
+      },
+      {
+        extend: "colvis",
+        text: '<span class="badge  badge-info"><i class="fas fa-columns"></i></span>',
+        postfixButtons: ["colvisRestore"],
+      },
+    ],
+  });
+  // Fin de la tabla Diagnostico
 });
 
 function frmLogin(e) {
@@ -293,7 +655,7 @@ function btnEditarUser(id) {
   http.onreadystatechange = function () {
     if (this.readyState == 4 && this.status == 200) {
       const res = JSON.parse(this.responseText);
-      document.getElementById("id").value = res.id;
+      //document.getElementById("id").value = res.id;
       document.getElementById("usuario").value = res.usuario;
       document.getElementById("nombre").value = res.nombre;
       document.getElementById("caja").value = res.id_caja;
@@ -472,7 +834,7 @@ function btnEditarPaci(id) {
 function btnEliminarPaci(id) {
   Swal.fire({
     title: "¿Estas seguro de eliminar?",
-    text: "El usuario no se eliminara de forma permatente, solo se cambiara el estado a inactivo",
+    text: "El paciente no se eliminara de forma permatente, solo se cambiara el estado a inactivo",
     icon: "warning",
     showCancelButton: true,
     confirmButtonColor: "#3085d6",
@@ -614,7 +976,7 @@ function btnEditarCli(id) {
   http.onreadystatechange = function () {
     if (this.readyState == 4 && this.status == 200) {
       const res = JSON.parse(this.responseText);
-      document.getElementById("id").value = res.id;
+      //document.getElementById("id").value = res.id;
       document.getElementById("dni").value = res.dni;
       document.getElementById("nombre").value = res.nombre;
       document.getElementById("telefono").value = res.telefono;
@@ -935,7 +1297,7 @@ function btnEditarVis(id) {
   http.onreadystatechange = function () {
     if (this.readyState == 4 && this.status == 200) {
       const res = JSON.parse(this.responseText);
-      document.getElementById("id").value = res.id;
+      //document.getElementById("id").value = res.id;
       document.getElementById("dni").value = res.dni;
       document.getElementById("fecha").value = res.fecha;
       document.getElementById("turno").value = res.turno;
@@ -1005,5 +1367,320 @@ function btnReingresarVis(id) {
     }
   });
 }
-
 //Fin Visitas
+
+//Inicio Enfermeras
+function frmEnfermera() {
+  document.getElementById("title").innerHTML = "Nueva Enfermera";
+  document.getElementById("btnAccion").innerHTML = "Registrar";
+  document.getElementById("frmEnfermera").reset();
+  $("#nuevo_enfermera").modal("show");
+  document.getElementById("id").value = "";
+}
+
+function registrarEnf(e) {
+  e.preventDefault();
+  var dni = document.getElementById("dni");
+  var nombre = document.getElementById("nombre");
+  var apepaterno = document.getElementById("apepaterno");
+  var apematerno = document.getElementById("apematerno");
+  var dnipac = document.getElementById("dnipac");
+
+  if (
+    dni.value == "" ||
+    nombre.value == "" ||
+    apepaterno.value == "" ||
+    apematerno.value == "" ||
+    dnipac.value == ""
+  ) {
+    Swal.fire({
+      position: "top-center",
+      icon: "error",
+      title: "Todos los campos son obligatorios",
+      showConfirmButton: false,
+      timer: 3000,
+    });
+  } else {
+    var url = base_url + "Enfermeras/registrar";
+    var frm = document.getElementById("frmEnfermera");
+    var http = new XMLHttpRequest();
+    http.open("POST", url, true);
+    http.send(new FormData(frm));
+    http.onreadystatechange = function () {
+      if (this.readyState == 4 && this.status == 200) {
+        var res = JSON.parse(this.responseText);
+        if (res == "si") {
+          Swal.fire({
+            position: "top-center",
+            icon: "success",
+            title: "Enfermera registrada con éxito",
+            showConfirmButton: false,
+            timer: 3000,
+          });
+          frm.reset();
+          $("#nuevo_enfermera").modal("hide");
+          tblEnfermeras.ajax.reload();
+        } else if (res == "modificado") {
+          Swal.fire({
+            position: "top-center",
+            icon: "success",
+            title: "Enfermera modificada con éxito",
+            showConfirmButton: false,
+            timer: 3000,
+          });
+          $("#nuevo_familiar").modal("hide");
+          tblEnfermeras.ajax.reload();
+        } else {
+          Swal.fire({
+            position: "top-center",
+            icon: "error",
+            title: res,
+            showConfirmButton: false,
+            timer: 3000,
+          });
+        }
+      }
+    };
+  }
+}
+
+function btnEditarEnf(id) {
+  document.getElementById("title").innerHTML = "Actualizar Enfermera";
+  document.getElementById("btnAccion").innerHTML = "Modificar";
+
+  const url = base_url + "Enfermeras/editar/" + id;
+  const http = new XMLHttpRequest();
+  http.open("GET", url, true);
+  http.send();
+  http.onreadystatechange = function () {
+    if (this.readyState == 4 && this.status == 200) {
+      const res = JSON.parse(this.responseText);
+      //document.getElementById("id").value = res.id;
+      document.getElementById("dni").value = res.dni;
+      document.getElementById("nombre").value = res.nombre;
+      document.getElementById("apepaterno").value = res.apepaterno;
+      document.getElementById("apematerno").value = res.apematerno;
+      document.getElementById("dnipac").value = res.dnipac;
+      $("#nuevo_enfermera").modal("show");
+    }
+  };
+}
+
+function btnEliminarEnf(id) {
+  Swal.fire({
+    title: "¿Estas seguro de eliminar?",
+    text: "La enfermera no se eliminara de forma permatente, solo se cambiara el estado a inactivo",
+    icon: "warning",
+    showCancelButton: true,
+    confirmButtonColor: "#3085d6",
+    cancelButtonColor: "#d33",
+    confirmButtonText: "Si",
+    cancelButtonText: "No",
+  }).then((result) => {
+    if (result.isConfirmed) {
+      const url = base_url + "Enfermeras/eliminar/" + id;
+      const http = new XMLHttpRequest();
+      http.open("GET", url, true);
+      http.send();
+      http.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+          const res = JSON.parse(this.responseText);
+          if (res == "ok") {
+            Swal.fire("Mensaje!", "Enfermera eliminada con exito", "success");
+            tblEnfermeras.ajax.reload();
+          } else {
+            Swal.fire("Mensaje!", res, "success");
+          }
+        }
+      };
+    }
+  });
+}
+
+function btnReingresarEnf(id) {
+  Swal.fire({
+    title: "¿Estas seguro de reingresar?",
+    icon: "warning",
+    showCancelButton: true,
+    confirmButtonColor: "#3085d6",
+    cancelButtonColor: "#d33",
+    confirmButtonText: "Si",
+    cancelButtonText: "No",
+  }).then((result) => {
+    if (result.isConfirmed) {
+      const url = base_url + "Enfermeras/reingresar/" + id;
+      const http = new XMLHttpRequest();
+      http.open("GET", url, true);
+      http.send();
+      http.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+          const res = JSON.parse(this.responseText);
+          if (res == "ok") {
+            Swal.fire("Mensaje!", "Enfermera reingresada con exito", "success");
+            tblEnfermeras.ajax.reload();
+          } else {
+            Swal.fire("Mensaje!", res, "success");
+          }
+        }
+      };
+    }
+  });
+}
+//Fin Enfermeras
+
+//Inicio Diagnostico
+function frmDiagnostico() {
+  document.getElementById("title").innerHTML = "Nuevo Diagnóstico";
+  document.getElementById("btnAccion").innerHTML = "Registrar";
+  document.getElementById("frmDiagnostico").reset();
+  $("#nuevo_diagnostico").modal("show");
+  document.getElementById("id").value = "";
+}
+
+function registrarDia(e) {
+  e.preventDefault();
+  var dnipac = document.getElementById("dnipac");
+  var medicamento = document.getElementById("medicamento");
+  var detalles = document.getElementById("detalles");
+  if (dnipac.value == "" || medicamento.value == "" || detalles.value == "") {
+    Swal.fire({
+      position: "top-center",
+      icon: "error",
+      title: "Todos los campos son obligatorios",
+      showConfirmButton: false,
+      timer: 3000,
+    });
+  } else {
+    var url = base_url + "Diagnostico/registrar";
+    var frm = document.getElementById("frmDiagnostico");
+    var http = new XMLHttpRequest();
+    http.open("POST", url, true);
+    http.send(new FormData(frm));
+    http.onreadystatechange = function () {
+      if (this.readyState == 4 && this.status == 200) {
+        var res = JSON.parse(this.responseText);
+        if (res == "si") {
+          Swal.fire({
+            position: "top-center",
+            icon: "success",
+            title: "Diagnostico registrado con éxito",
+            showConfirmButton: false,
+            timer: 3000,
+          });
+          frm.reset();
+          $("#nuevo_diagnostico").modal("hide");
+          tblDiagnostico.ajax.reload();
+        } else if (res == "modificado") {
+          Swal.fire({
+            position: "top-center",
+            icon: "success",
+            title: "Diagnóstico modificado con éxito",
+            showConfirmButton: false,
+            timer: 3000,
+          });
+          $("#nuevo_diagnostico").modal("hide");
+          tblDiagnostico.ajax.reload();
+        } else {
+          Swal.fire({
+            position: "top-center",
+            icon: "error",
+            title: res,
+            showConfirmButton: false,
+            timer: 3000,
+          });
+        }
+      }
+    };
+  }
+}
+
+function btnEditarDia(id) {
+  document.getElementById("title").innerHTML = "Actualizar Diagnóstico";
+  document.getElementById("btnAccion").innerHTML = "Modificar";
+
+  const url = base_url + "Diagnostico/editar/" + id;
+  const http = new XMLHttpRequest();
+  http.open("GET", url, true);
+  http.send();
+  http.onreadystatechange = function () {
+    if (this.readyState == 4 && this.status == 200) {
+      const res = JSON.parse(this.responseText);
+      //document.getElementById("id").value = res.id;
+      document.getElementById("dnipac").value = res.dnipac;
+      document.getElementById("medicamento").value = res.medicamento;
+      document.getElementById("detalles").value = res.detalles;
+      $("#nuevo_diagnostico").modal("show");
+    }
+  };
+}
+
+function btnEliminarDia(id) {
+  Swal.fire({
+    title: "¿Estas seguro de eliminar?",
+    text: "El diagnóstico no se eliminara de forma permatente, solo se cambiara el estado a inactivo",
+    icon: "warning",
+    showCancelButton: true,
+    confirmButtonColor: "#3085d6",
+    cancelButtonColor: "#d33",
+    confirmButtonText: "Si",
+    cancelButtonText: "No",
+  }).then((result) => {
+    if (result.isConfirmed) {
+      const url = base_url + "Diagnostico/eliminar/" + id;
+      const http = new XMLHttpRequest();
+      http.open("GET", url, true);
+      http.send();
+      http.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+          const res = JSON.parse(this.responseText);
+          if (res == "ok") {
+            Swal.fire("Mensaje!", "Diagnóstico eliminado con exito", "success");
+            tblDiagnostico.ajax.reload();
+          } else {
+            Swal.fire("Mensaje!", res, "success");
+          }
+        }
+      };
+    }
+  });
+}
+
+function btnReingresarDia(id) {
+  Swal.fire({
+    title: "¿Estas seguro de reingresar?",
+    icon: "warning",
+    showCancelButton: true,
+    confirmButtonColor: "#3085d6",
+    cancelButtonColor: "#d33",
+    confirmButtonText: "Si",
+    cancelButtonText: "No",
+  }).then((result) => {
+    if (result.isConfirmed) {
+      const url = base_url + "Diagnostico/reingresar/" + id;
+      const http = new XMLHttpRequest();
+      http.open("GET", url, true);
+      http.send();
+      http.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+          const res = JSON.parse(this.responseText);
+          if (res == "ok") {
+            Swal.fire(
+              "Mensaje!",
+              "Diagnóstico reingresado con exito",
+              "success"
+            );
+            tblDiagnostico.ajax.reload();
+          } else {
+            Swal.fire("Mensaje!", res, "success");
+          }
+        }
+      };
+    }
+  });
+}
+
+function generarReporte() {
+  const ruta = base_url + "Pacientes/generarPdf/1";
+  window.open(ruta);
+}
+//Fin Diagnostico

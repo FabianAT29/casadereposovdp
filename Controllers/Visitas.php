@@ -57,7 +57,7 @@ class Visitas extends Controller
                     $msg = "Error al registrar la visita";
                 }
             } else {
-                $data = $this->model->modificarCliente($dni, $fecha, $turno, $horario, $id);
+                $data = $this->model->modificarVisita($dni, $fecha, $turno, $horario, $id);
                 if ($data == "modificado") {
                     $msg = "modificado";
                 } else if ($data == "existe") {
@@ -72,8 +72,9 @@ class Visitas extends Controller
     }
     public function editar(int $id)
     {
-        $data = $this->model->editarVi($id);
+        $data = $this->model->editarVis($id);
         echo json_encode($data, JSON_UNESCAPED_UNICODE);
+        die();
     }
     public function eliminar(int $id)
     {

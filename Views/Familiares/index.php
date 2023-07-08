@@ -67,12 +67,12 @@ include "Views/Templates/header.php";
                     <!--<div class="form-group">
                         <label for="dnipac">DNI Paciente</label>
                         <input id="dnipac" class="form-control" type="text" name="dnipac" placeholder="Dni del paciente" pattern="[0-9]{8,8}" maxlength="8">
-                    </div>--->
+                    </div>-->
                     <div class="form-group inputUsu mt-3 focus">
                         <label for="dnipac">DNI Paciente</label>
                         <select id="dnipac" class="form-control" name="dnipac">
-                        <?php foreach ($data['dnipac'] as $row) { ?>
-                            <option value="<?php echo $row['dni']; ?>"><?php echo $row['nombre']; ?> <?php echo $row['apepaterno']; ?> <?php echo $row['apematerno']; ?></option>
+                            <?php foreach ($data['dnipac'] as $row) { ?>
+                                <option value="<?php echo $row['dni']; ?>"><?php echo $row['nombre']; ?> <?php echo $row['apepaterno']; ?> <?php echo $row['apematerno']; ?></option>
                             <?php } ?>
                         </select>
                     </div>

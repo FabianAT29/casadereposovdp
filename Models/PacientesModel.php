@@ -106,4 +106,20 @@ class PacientesModel extends Query
         $data = $this->save($sql, $datos);
         return $data;
     }
+
+    //Para el PDF
+    public function getEmpresa()
+    {
+        $sql = "SELECT * FROM configuración";
+        $data = $this->select($sql);
+        return $data;
+    }
+    //Para el PDF
+    public function getDatosPaciente()
+    {
+        $sql =  "SELECT pacientes.*, tipoestadia.nombre AS nombreestadia FROM pacientes 
+        INNER JOIN tipoestadia ON pacientes.id_estadia = tipoestadia.id";
+        $data = $this->selectAll($sql);
+        return $data;
+    }
 }

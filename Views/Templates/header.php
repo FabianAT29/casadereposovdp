@@ -10,7 +10,7 @@
     <title>Casa de Reposo Vida de Paz</title>
     <link rel="icon" href="<?php echo base_url; ?>Assets/img/logo.jpeg" type="image/png">
     <link href="<?php echo base_url; ?>Assets/css/styles.css" rel="stylesheet" />
-    <link href="<?php echo base_url; ?>Assets/css/dataTables.bootstrap4.min.css" rel="stylesheet" />
+    <link href="<?php echo base_url; ?>Assets/DataTables/datatables.min.css" rel="stylesheet" />
     <script src="<?php echo base_url; ?>Assets/js/all.min.js" crossorigin="anonymous"></script>
     <link href="<?php echo base_url; ?>Assets/css/font-awesome.min.css" rel="stylesheet" />
 </head>
@@ -48,7 +48,7 @@
                         <a class="nav-link" href="<?php echo base_url; ?>Enfermeras"> Enfermeras</a>
                         <a class="nav-link" href="<?php echo base_url; ?>Diagnostico"> Diagnostico</a>
                         <!-- Botones para los modulos -->
-                        
+
                         <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
                             <div class="sb-nav-link-icon"><i class="fas fa-tools"></i></div>
                             Configuración
@@ -65,7 +65,7 @@
                 </div>
 
                 <div class="sb-sidenav-footer">
-                <img class="img-thumbnail" src="<?php echo base_url; ?>Assets/img/logo.jpeg" alt="Logo de la empresa">
+                    <img class="img-thumbnail" src="<?php echo base_url; ?>Assets/img/logo.jpeg" alt="Logo de la empresa">
 
             </nav>
         </div>

@@ -28,7 +28,7 @@ include "Views/Templates/header.php";
         <div class="modal-content">
             <div class="modal-header bg-dark">
                 <h5 class="modal-title text-white" id="title">Nueva Visita</h5>
-                <button class="close" data-dismiss="modal" aria-label="Close">
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
@@ -57,7 +57,7 @@ include "Views/Templates/header.php";
 
                     <div class="form-group">
                         <label for="horario">Horario de atención</label>
-                        <select id="horario" class="form-control" name="horario">
+                            <select id="horario" class="form-control" name="horario">
                             <option value="0"></option>
                             <option value="1">10-11 a.m.</option>
                             <option value="2">11-12 a.m. </option>

@@ -12,7 +12,7 @@ class Pacientes extends Controller
 
 
     public function index()
-    {   
+    {
         $data['estadia'] = $this->model->getEstadias();
         $this->views->getView($this, "index", $data);
     }
